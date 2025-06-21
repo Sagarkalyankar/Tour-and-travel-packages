@@ -1,0 +1,10 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+body{
+    display: block;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('https://hblimg.mmtcdn.com/content/hubble/img/additionalttdimages/mmt/activities/m_Hot_Air_Balloon_at_Sunrise_1_l_667_1000.jpg') 
+        
+}

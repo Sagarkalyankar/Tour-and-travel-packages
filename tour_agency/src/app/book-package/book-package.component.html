@@ -1,0 +1,57 @@
+<app-navbar></app-navbar>
+
+<div class="container-fluid py-5"[ngStyle]="{ 
+  'background-image': 'url(' + package.image + ')', 
+  'background-size': 'cover', 
+  'background-position': 'center',
+  'width': '100%', 
+  'height': '100%', 
+  
+}">
+    <h2 class="text-center fw-bold"><i class="bi bi-calendar-check"></i> Book Package</h2>
+  
+    <div class="row g-4 mt-4 justify-content-center">
+      <!-- Package Details -->
+      <div class="col-md-6 ">
+        <div class="p-4 bg-light shadow-sm rounded">
+          <img [src]="package.image" class="img-fluid rounded shadow-sm w-100" alt="Package Image">
+          <h3 class="fw-bold mt-3">{{ package.name }}</h3>
+          <p class="text-muted">{{ package.description }}</p>
+          
+          
+       
+      
+        </div>
+      </div>
+      <!-- Booking Form -->
+      <div class="col-md-6 ">
+       <div class="p-4 bg-white shadow-sm rounded">
+          
+          <h3 class="fw-bold mt-3">{{ package.name }}</h3>
+          <p class="text-muted">{{ package.description }}</p>
+          <p><strong>Price:</strong> ₹{{ package.price }}</p>
+          <p><strong>Duration:</strong> {{ package.duration }}</p>
+          <p><strong>Location:</strong> {{ package.location }}</p>
+          <h4 class="fw-bold">Enter Booking Details</h4>
+          <form>
+            <p class="text-muted">Please fill in the details below to book your package.</p>
+            <div class="mb-3">
+              <label for="numOfPeople" class="form-label">Number of People</label>
+              <input type="number" id="numOfPeople" class="form-control" [(ngModel)]="bookingDetails.numOfPeople" name="numOfPeople" min="1" required>
+            </div>
+  
+            <div class="mb-3">
+              <label for="travelDate" class="form-label">Travel Date</label>
+              <input type="date" id="travelDate" class="form-control" [(ngModel)]="bookingDetails.travelDate" name="travelDate" required>
+            </div>
+  
+            <button type="submit" class="btn btn-primary w-100" (click)="bookPackage()">
+              <i class="bi bi-check-circle"></i> Confirm Booking
+            </button>
+          </form>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  

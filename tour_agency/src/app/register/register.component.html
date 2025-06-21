@@ -1,0 +1,56 @@
+<div 
+  [ngStyle]="{ 
+    'background-image': 'url(https://hblimg.mmtcdn.com/content/hubble/img/additionalttdimages/mmt/activities/m_Hot_Air_Balloon_at_Sunrise_1_l_667_1000.jpg)', 
+    'background-size': 'cover', 
+    'background-position': 'center',
+    'width': '100%', 
+    'height': '100%', 
+    'position': 'fixed'
+  }">
+  
+  <div class="container d-flex flex-column justify-content-center align-items-center vh-100">
+    
+    <!-- Quote -->
+    <h2 class="text-white text-center mb-4" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.5); font-weight: bold;">
+      Life is a journey, not a destination.
+    </h2>
+
+    <!-- Registration Form -->
+    <div 
+      class="card p-4 shadow-lg" 
+      style="width: 400px; border-radius: 15px; backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.2); box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);">
+      
+      <h3 class="text-center mb-4 text-white">Register</h3>
+      
+      <div class="mb-3 input-group">
+        <span class="input-group-text"><i class="bi bi-person"></i></span>
+        <input type="text" class="form-control" placeholder="Username" [(ngModel)]="user.username">
+      </div>
+      <div class="mb-3 input-group">
+        <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+        <input type="email" class="form-control" placeholder="Email" [(ngModel)]="user.email">
+      </div>
+
+      <div class="mb-3 input-group">
+        <span class="input-group-text"><i class="bi bi-lock"></i></span>
+        <input type="password" class="form-control" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+         title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" [(ngModel)]="user.password">
+      </div>
+
+      <div class="mb-3 input-group">
+        <span class="input-group-text"><i class="bi bi-telephone"></i></span>
+        <input type="text" class="form-control" placeholder="Phone Number" [(ngModel)]="user.phone_number">
+      </div>
+
+      <div class="mb-3 input-group">
+        <span class="input-group-text"><i class="bi bi-geo-alt"></i></span>
+        <input type="text" class="form-control" placeholder="Address" [(ngModel)]="user.address">
+      </div>
+
+      <button class="btn btn-primary w-100" (click)="register()">Register</button>
+      <p class="text-success text-center mt-2">{{ message }}</p>
+
+      <p class="text-center mt-3">Already have an account? <a href="login" class="text-primary">Login</a></p>
+    </div>
+  </div>
+</div>

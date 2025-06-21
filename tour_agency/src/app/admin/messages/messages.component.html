@@ -1,0 +1,30 @@
+
+<h3>messages</h3>
+<div class="table-responsive">
+  <table class="table table-bordered table-hover">
+    <thead class="table-light">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Subject</th>
+        <th>Message</th>
+        <th>Reply</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let msg of messages">
+
+        <td>{{ msg.id }}</td>
+        <td>{{ msg.name }}</td>
+        <td>{{ msg.email }}</td>
+        <td>{{ msg.subject }}</td>
+        <td>{{ msg.message }}</td>
+        <td>
+          <button class="btn btn-sm btn-warning me-2" >reply to mail</button>
+        </td>
+        
+      </tr>
+    </tbody>
+  </table>
+</div>

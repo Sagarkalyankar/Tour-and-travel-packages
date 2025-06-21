@@ -1,0 +1,175 @@
+<!-- Navbar  -->
+<app-navbar></app-navbar>
+
+<!-- Hero Section -->
+<header class="position-relative" id="home">
+  <div id="carouselExample" class="carousel slide" data-bs-ride="carousel"  data-bs-interval="5000">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img class="d-block w-100" [src]="slide1" alt="First slide">
+        <div class="carousel-caption d-md-block bg-dark bg-opacity-50 p-3 rounded">
+          <h1 class="fw-bold text-white">LADAKH</h1>
+          <p class="fs-5 text-light">The Cold Desert Of INDIA</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img class="d-block w-100" [src]="slide2" alt="Second slide">
+        <div class="carousel-caption d-md-block bg-dark bg-opacity-50 p-3 rounded">
+          <h1 class="fw-bold text-white">North INDIA</h1>
+          <p class="fs-5 text-light">Heaven! Welcome On Land Of GOD</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img class="d-block w-100" [src]="slide3" alt="Third slide">
+        <div class="carousel-caption d-md-block bg-dark bg-opacity-50 p-3 rounded">
+          <h1 class="fw-bold text-white">Journey</h1>
+          <p class="fs-5 text-light">The Way Of Life</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Previous & Next Buttons -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+</header>
+
+<!-- Search Form -->
+  <!-- <div class="d-flex justify-content-center align-items-center  bg-light">
+    <div class="container bg-white p-3 rounded shadow">
+        <form>
+            <div class="row row-cols-1 row-cols-md-4 g-2 align-items-center">
+                <div class="col-md-3">
+                    <select class="form-select" name="city" id="city" >
+                        <option value="" selected>From...</option>
+                        <option value="Europe">Europe</option>
+                        <option value="United states">United States</option>
+                        <option value="South America">South America</option>
+                        <option value="Oceania">Oceania</option>
+                        <option value="Asia">Asia</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                  <select class="form-select" name="city" id="city" >
+                      <option value="" selected>To...</option>
+                      <option value="Europe">Europe</option>
+                      <option value="United states">United States</option>
+                      <option value="South America">South America</option>
+                      <option value="Oceania">Oceania</option>
+                      <option value="Asia">Asia</option>
+                  </select>
+              </div>
+                <div class="col-md-3">
+                    <input class="form-control" type="date" id="departure" >
+                </div>
+                <div class="col-md-3">
+                    <input class="form-control" type="number" id="guests" placeholder="Guests" min="1" value="1" >
+                </div>
+                <div class="col-md-3">
+                    <button type="submit" class="btn btn-danger" ><i class="bi bi-search"></i> Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
+  </div> -->
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    let authModal = new bootstrap.Modal(document.getElementById("authModal"));
+    setTimeout(() => authModal.show(), 2000);
+  });
+</script>
+
+
+<!-- Packages Section -->
+<section class="container my-5">
+  <h2 class="text-center fw-bold mb-4"><i class="bi bi-briefcase-fill"></i> Our Top Tour Packages</h2>
+  <div class="row g-4 row-cols-1 row-cols-md-3">
+    <div class="col" *ngFor="let product of packages | slice:0:3">
+      <div class="card shadow-lg border-0 rounded overflow-hidden">
+        <img [src]="product.image" class="card-img-top" alt="Package Image">
+        <div class="card-body text-center">
+          <h5 class="card-title fw-bold">{{ product.name }}</h5>
+          <p class="card-text text-muted">{{ product.description }}</p>
+          <p class="fw-bold text-primary fs-5">₹{{ product.price }}</p>
+          <button class="btn btn-outline-primary w-100" (click)="viewPackage(product.id)"><i class="bi bi-eye"></i> View Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Explore Destinations -->
+<section class="container my-5">
+  <h2 class="text-center fw-bold mb-4"><i class="bi bi-camera-video"></i> Explore Destinations</h2>
+  <div class="row">
+    <div class="col-md-6 mb-3" *ngFor="let video of videos">
+      <div class="ratio ratio-16x9">
+        <iframe [src]="video" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About Section -->
+<section class="bg-light py-5" id="about">
+  <div class="container text-center">
+    <h2 class="fw-bold"><i class="bi bi-globe2"></i> About Us</h2>
+    <p class="fs-5">We offer the best travel experiences with premium packages, adventure tours, and customized trips worldwide.</p>
+  </div>
+</section>
+
+
+
+<!-- World Map -->
+<section class="container my-5 text-center">
+  <h2 class="fw-bold"><i class="bi bi-map"></i> Trending Travel Destinations</h2>
+  <a href=""><img [src]="worldMapImage" class="img-fluid mt-3 shadow-lg rounded " alt="World Map"></a>
+</section>
+
+<!-- Contact Section -->
+<section class="py-5 bg-light" id="contact">
+  <div class="container">
+    <h2 class="text-center fw-bold"><i class="bi bi-envelope"></i> Contact Us</h2>
+    <p class="text-center fs-5">Get in touch with us for inquiries, bookings, or assistance.</p>
+
+    <div class="row g-4">
+      <!-- Contact Details -->
+      <div class="col-md-6">
+        <div class="p-4 bg-white shadow-sm rounded h-100">
+          <h5 class="fw-bold"><i class="bi bi-telephone-fill"></i> Contact Details</h5>
+          <p><i class="bi bi-envelope-fill"></i> Email: <a href="mailto:info@touragency.com">info&#64;touragency.com</a></p>
+          <p><i class="bi bi-phone-fill"></i> Phone: <a href="tel:+91 9234567890">+91 9234567890</a></p>
+          <p><i class="bi bi-geo-alt-fill"></i> Address: 123 Travel Street, Pune, India</p>
+          <div class="container">
+            <h2 class="fs-5">The Answers May Match Your Questions</h2>
+            <button class="btn btn-primary" (click)="FAQ()">GO To FAQ</button>
+        </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Footer -->
+<footer class="bg-primary text-white text-center py-4">
+  <div class="container">
+    <p class="mb-2">&copy; 2025 Tour Agency. All rights reserved.</p>
+    <div>
+      <a href="#" class="text-white me-3"><i class="bi bi-facebook fs-4"></i></a>
+      <a href="#" class="text-white me-3"><i class="bi bi-twitter fs-4"></i></a>
+      <a href="#" class="text-white me-3"><i class="bi bi-instagram fs-4"></i></a>
+      <a href="#" class="text-white"><i class="bi bi-youtube fs-4"></i></a>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

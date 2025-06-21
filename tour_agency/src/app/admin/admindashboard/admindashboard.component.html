@@ -1,0 +1,134 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top shadow">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#">
+      <i class="bi bi-globe-americas"></i> Tour Agency
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/admindash"><i class="bi bi-house-door"></i> Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/packages"><i class="bi bi-card-list"></i> Packages</a>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/flights"><i class="bi bi-airplane"></i> Flights</a>
+        </li> -->
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/messages"><i class="bi bi-envelope"></i> Messages</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle fw-semibold" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
+            <i class="bi bi-person-circle"></i>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/admin-profile"><i class="bi bi-person"></i> Profile</a></li>
+            <!-- <li><a class="dropdown-item text-danger"><i class="bi bi-box-arrow-right"></i> Logout</a></li> -->
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Main Container -->
+<div class="container mt-5">
+  <h2 class="mb-4">Admin Dashboard</h2>
+  <div class="row g-4 row-cols-1 row-cols-md-2">
+    <div class="col">
+      <div class="row mb-4">
+        <div class="col-md-4">
+          <div class="border rounded p-3 bg-light">
+            <p><strong>Total Bookings:</strong> {{ bookedPackages?.length || 0 }}</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="border rounded p-3 bg-light">
+            <p><strong>Total Packages:</strong> {{ packages?.length || 0 }}</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="border rounded p-3 bg-light">
+            <p><strong>Total Users:</strong> {{ users?.length || 0 }}</p>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    <div class="col">
+      <!-- here pie chart -->
+       
+        <div   style=" margin-top: 10px;">
+          <canvas id='Info' ></canvas>
+          <h1></h1>
+        </div>
+        
+      
+      </div>
+  </div>
+
+  <hr>
+
+  <h3>{{ isEditMode ? 'Edit Package' : 'Add New Package' }}</h3>
+  <form (submit)="addOrUpdatePackage()" #packageForm="ngForm" class="mb-4">
+    <div class="mb-3">
+      <input type="text" class="form-control" [(ngModel)]="newPackage.name" name="name" required placeholder="Package Name" />
+    </div>
+    <div class="mb-3">
+      <input type="text" class="form-control" [(ngModel)]="newPackage.image" name="image" required placeholder="Package Image Link" />
+    </div>
+    <div class="mb-3">
+      <input type="text" class="form-control" [(ngModel)]="newPackage.location" name="location" required placeholder="Package Location" />
+    </div>
+    <div class="mb-3">
+      <textarea class="form-control" [(ngModel)]="newPackage.description" name="description" required placeholder="Description"></textarea>
+    </div>
+    <div class="mb-3">
+      <input type="number" class="form-control" [(ngModel)]="newPackage.price" name="price" required placeholder="Price" />
+    </div>
+    <button type="submit" class="btn btn-primary me-2">{{ isEditMode ? 'Update' : 'Add' }}</button>
+    <button type="button" class="btn btn-secondary" *ngIf="isEditMode" (click)="resetForm()">Cancel</button>
+  </form>
+
+  <hr>
+
+  <h3>Package List</h3>
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover">
+      <thead class="table-light">
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Price (₹)</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pkg of packages">
+          <td>{{ pkg.name }}</td>
+          <td>{{ pkg.description }}</td>
+          <td>{{ pkg.price }}</td>
+          <td>
+            <div class="row row-cols-md-2 g-2">
+            <button class="btn btn-sm btn-warning me-2" (click)="editPackage(pkg)">Edit</button>
+            <button class="btn btn-sm btn-danger" (click)="deletePackage(pkg.id)">Delete</button>
+          </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr>
+
+  <h3>Registered Users</h3>
+  <ul class="list-group">
+    <li *ngFor="let user of users" class="list-group-item">
+      {{user.id}} - {{ user.username }} - {{ user.phone_number }} - {{user.address}}
+    </li>
+  </ul>
+</div>

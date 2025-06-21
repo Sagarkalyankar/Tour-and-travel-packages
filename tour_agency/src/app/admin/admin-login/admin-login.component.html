@@ -1,0 +1,39 @@
+<div 
+  [ngStyle]="{ 
+    'background-image': 'url(https://hblimg.mmtcdn.com/content/hubble/img/additionalttdimages/mmt/activities/m_Hot_Air_Balloon_at_Sunrise_1_l_667_1000.jpg)', 
+    'background-size': 'cover', 
+    'background-position': 'center',
+    'width': '100%', 
+    'height': '100%', 
+    'position': 'fixed'
+  }">
+
+
+  
+  <div class="container d-flex justify-content-center align-items-center vh-100">
+    
+    <div 
+      class="card p-4 shadow-lg" 
+      style="width: 350px; border-radius: 15px; backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.2); box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);">
+      
+      <h3 class="text-center mb-4 text-white">Admin Login</h3>
+      
+      <div class="mb-3 input-group">
+        <span class="input-group-text">
+          <i class="bi bi-person"></i>
+        </span>
+        <input type="text" class="form-control" placeholder="Username" [(ngModel)]="credentials.username">
+      </div>
+      
+      <div class="mb-3 input-group">
+        <span class="input-group-text">
+          <i class="bi bi-lock"></i>
+        </span>
+        <input type="password" class="form-control" placeholder="Password" [(ngModel)]="credentials.password">
+      </div>
+      
+      <button class="btn btn-primary w-100" (click)="login()">Login</button>
+      <p class="text-danger text-center mt-2">{{ message }}</p>
+    </div>
+  </div>
+</div>

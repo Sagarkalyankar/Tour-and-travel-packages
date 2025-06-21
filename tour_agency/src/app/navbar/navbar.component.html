@@ -1,0 +1,67 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#">
+      <i class="bi bi-globe-americas"></i> Tour Agency
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/">
+            <i class="bi bi-house-door"></i> Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/packages">
+            <i class="bi bi-card-list"></i> Packages
+          </a>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/flights">
+            <i class="bi bi-airplane"></i> Flights
+          </a>
+        </li> -->
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/about">
+            <i class="bi bi-info-circle"></i> About
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/contact-us">
+            <i class="bi bi-telephone"></i> Contact
+          </a>
+        </li>
+
+        <!-- User Profile (Visible if Logged In) -->
+        <ng-container *ngIf="isLoggedIn">  
+        <li class="nav-item dropdown" >
+          <a class="nav-link dropdown-toggle fw-semibold" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
+            <i class="bi bi-person-circle"></i> {{ user?.username }}
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/user-profile"><i class="bi bi-person"></i> Profile</a></li>
+            <li><a class="dropdown-item text-danger" (click)="logout()"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
+          </ul>
+        </li>
+      </ng-container>
+        <!-- Login/Register Visible if Not Logged In -->
+        <ng-container *ngIf="!isLoggedIn">
+        <li class="nav-item" >
+          <a class="nav-link fw-semibold" href="/login">
+            <i class="bi bi-box-arrow-in-right"></i> Login
+          </a>
+        </li>
+        <li class="nav-item" *ngIf="!isLoggedIn">
+          <a class="nav-link fw-semibold" href="/register">
+            <i class="bi bi-person-plus"></i> Register
+          </a>
+        </li>
+        </ng-container>
+      </ul>
+        
+    </div>
+  </div>
+</nav>

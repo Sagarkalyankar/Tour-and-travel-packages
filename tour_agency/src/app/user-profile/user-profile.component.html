@@ -1,0 +1,56 @@
+<!-- Navbar -->
+<app-navbar></app-navbar>
+
+<!-- User Profile -->
+<section class="container py-5">
+  <h2 class="fw-bold text-center mb-4">
+    <i class="bi bi-person-circle"></i> Welcome {{ user.username }}
+  </h2>
+
+  <!-- User Info Card -->
+  <div class="card shadow-sm mb-5">
+    <div class="card-body">
+      <h5 class="card-title"><i class="bi bi-person-fill"></i> {{ user.username }}</h5>
+      <p><i class="bi bi-envelope"></i> Email: {{ user.email }}</p>
+      <p><i class="bi bi-phone-fill"></i> Contact: {{ user.phone_number }}</p>
+      <p><i class="bi bi-geo-alt-fill"></i> Location: {{ user.address }}</p>
+    </div>
+  </div>
+
+  <!-- Booked Packages -->
+  <h4 class="fw-bold mb-3">
+    <i class="bi bi-bookmark-check-fill"></i> Booked Packages
+  </h4>
+
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+    <div class="col" *ngFor="let booking of bookings">
+      <div class="card h-100 shadow border-0">
+        <img *ngIf="booking.package__image" [src]="booking.package__image" class="card-img-top" alt="Package Image">
+        <div class="card-body">
+          <h5 class="card-title">{{ booking.package__name }}</h5>
+          <p class="card-text text-muted" *ngIf="booking.package__description">{{ booking.package__description }}</p>
+          <p><strong>Travel Date:</strong> {{ booking.travel_date | date }}</p>
+          <p><strong>Guests:</strong> {{ booking.number_of_people }}</p>
+          <p *ngIf="booking.total_price"><strong>Total Paid:</strong> ₹{{ booking.total_price }}</p>
+          <p *ngIf="booking.status">
+            <span class="badge bg-success" *ngIf="booking.status === 'confirmed'">Confirmed</span>
+            <span class="badge bg-warning text-dark" *ngIf="booking.status === 'pending'">Pending</span>
+            <span class="badge bg-danger" *ngIf="booking.status === 'cancelled'">Cancelled</span>
+          </p>
+        </div>
+        <div class="card-footer bg-transparent border-0">
+          <button class="btn btn-outline-primary w-100" (click)="viewBooking()">
+            <i class="bi bi-eye"></i> View Booking
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-primary text-white text-center py-3 mt-5">
+  <div class="container">
+    <p class="mb-0">&copy; 2025 Tour Agency. All rights reserved.</p>
+  </div>
+</footer>

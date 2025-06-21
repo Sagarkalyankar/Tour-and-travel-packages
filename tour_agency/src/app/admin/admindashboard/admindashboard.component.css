@@ -1,0 +1,23 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+/* Navbar */
+.navbar {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+  }
+  
+  .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #000000 !important;
+  }
+  
+  .navbar-nav .nav-link {
+    font-size: 1.1rem;
+    transition: color 0.3s ease-in-out;
+    color: #5e6266 !important;
+  }
+  
+  .navbar-nav .nav-link:hover {
+    color: #ffdd57 !important;
+  }
