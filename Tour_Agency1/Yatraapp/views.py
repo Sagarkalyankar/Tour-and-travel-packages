@@ -1,29 +1,19 @@
 from django.http import HttpResponse
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import login_required
-from .models import TourPackage, Booking,User
-from .forms import BookingForm
-from .forms import TourPackageForm
-from rest_framework.permissions import IsAuthenticated
-from rest_framework.decorators import api_view,permission_classes,authentication_classes
-from rest_framework.response import Response
-from django.shortcuts import get_object_or_404
-from .models import UserProfile, TourPackage, Booking
-from django.contrib.auth import authenticate
-from rest_framework.permissions import IsAuthenticated
-from rest_framework_simplejwt.tokens import RefreshToken
-from rest_framework.permissions import AllowAny
-from .serializers import UserProfileSerializer
-from .serializers import adminSerializer
-from django.contrib.auth import authenticate
-from .models import User,UserProfile,adminUser
 from django.contrib.auth.models import User
+
+from rest_framework.decorators import api_view, permission_classes, authentication_classes
+from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.authentication import TokenAuthentication
 from rest_framework_simplejwt.authentication import JWTAuthentication
-from .models import ContactMessage
-from .serializers import ContactMessageSerializer
+from rest_framework_simplejwt.tokens import RefreshToken
+
+from .models import TourPackage, Booking, UserProfile, adminUser, ContactMessage
+from .forms import BookingForm, TourPackageForm
+from .serializers import UserProfileSerializer, adminSerializer, ContactMessageSerializer
 
 
 @api_view(['GET'])
