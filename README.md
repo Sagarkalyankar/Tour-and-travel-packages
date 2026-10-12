@@ -21,10 +21,10 @@ It has **two modules**:
 ---
 
 ## 🛠 Tech Stack
-**Frontend:** Angular / HTML / CSS / JavaScript  
+**Frontend:** Angular / HTML / CSS / TypeScript  
 **Backend:** Python Django + Django REST Framework  
-**Database:** SQLite (default) / MySQL / PostgreSQL (configurable)  
-**Styling:** Bootstrap / Tailwind CSS  
+**Database:**  MySQL  
+**Styling:** Bootstrap /  CSS  
 
 ---
 
